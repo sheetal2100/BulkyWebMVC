@@ -143,7 +143,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
                 GetAll(u => u.OrderHeaderId == OrderVM.OrderHeader.Id, includeProperties: "Product");
 
             // Stripe Payment goes here
-            var domain = "https://localhost:7226/";
+            var domain = Request.Scheme + "://" + Request.Host.Value + "/";
             var options = new SessionCreateOptions
             {
                 SuccessUrl = domain + $"Admin/Order/PaymentConfirmation?orderHeaderId={OrderVM.OrderHeader.Id}",
